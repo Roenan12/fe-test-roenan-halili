@@ -14,6 +14,7 @@ This project implements a clean, user-friendly React component for displaying st
 - The design is clean, modern, and mobile-friendly, with clear visual hierarchy and accessible color contrast.
 - Recursion is used to handle nested sets in the workout structure.
 - The component is intended for use in a React + TailwindCSS + Next.js environment.
+- **Note:** The workout description mentions "8 sets", but the actual main set in the JSON is "10" reps. The UI always reflects the actual data in the JSON.
 
 ## Approach
 
