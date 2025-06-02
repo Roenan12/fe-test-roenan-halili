@@ -1,101 +1,101 @@
-import Image from "next/image";
+import Workout from './_components/Workout';
+import type { WorkoutData } from './_components/Workout';
+
+const sampleWorkout: WorkoutData = {
+  _id: 'fetest',
+  name: 'Running Test',
+  description:
+    'Quick 10min warmup followed by 8 sets of 1min at high intensity and 30 sec rest between each intense interval. You then recover with a 5min easy jog.',
+  discipline: 'running',
+  duration: {
+    value: 35,
+    unit: 'min',
+  },
+  segments: [
+    {
+      title: 'Warmup',
+      blocks: [
+        {
+          type: 'duration_interval',
+          id: 'B1',
+          duration: {
+            value: 5,
+            unit: 'min',
+          },
+          intensity: 'easy',
+          note: "don't start too hard",
+          render: '5min easy jog',
+        },
+        {
+          type: 'duration_interval',
+          id: 'B2',
+          duration: {
+            value: 5,
+            unit: 'min',
+          },
+          intensity: 'fartlek',
+          note: "fartlek are random accelerations and decelerations at will. The purpose is to get the legs ready for the main set. Don't go too hard.",
+          render: '5min fartlek',
+        },
+      ],
+    },
+    {
+      title: 'Main set',
+      blocks: [
+        {
+          type: 'set',
+          id: 'B3',
+          reps: 10,
+          render: '10x:',
+          blocks: [
+            {
+              type: 'duration_interval',
+              id: 'B4',
+              duration: {
+                value: 1,
+                unit: 'min',
+              },
+              intensity: 'hard',
+              render: '1min hard',
+            },
+            {
+              type: 'rest',
+              id: 'B5',
+              duration: {
+                value: 30,
+                unit: 'sec',
+              },
+              intensity: 'recovery',
+              render: '30sec recovery',
+            },
+          ],
+        },
+      ],
+    },
+    {
+      title: 'Cool down',
+      blocks: [
+        {
+          type: 'duration_interval',
+          id: 'B6',
+          duration: {
+            value: 5,
+            unit: 'min',
+          },
+          intensity: 'easy',
+          render: '5min easy jog',
+        },
+      ],
+    },
+  ],
+};
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
+    <div className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-200">
+      <main className="container mx-auto px-4 py-8">
+        <Workout workout={sampleWorkout} />
       </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
     </div>
   );
 }
