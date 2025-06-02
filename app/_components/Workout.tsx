@@ -64,7 +64,9 @@ const ShoeIcon = () => (
   </svg>
 );
 
-const WorkoutHeader: React.FC<{ workout: WorkoutData }> = ({ workout }) => {
+type WorkoutHeaderProps = { workout: WorkoutData };
+
+const WorkoutHeader = ({ workout }: WorkoutHeaderProps) => {
   return (
     <div className="mb-8 bg-gray-800 rounded-xl p-6 text-white shadow flex flex-col gap-2">
       <div className="flex items-center justify-between mb-2">
@@ -131,10 +133,9 @@ function getBlockTitle(block: Block, segmentTitle?: string) {
   );
 }
 
-const Block: React.FC<{ block: Block; segmentTitle?: string }> = ({
-  block,
-  segmentTitle,
-}) => {
+type BlockProps = { block: Block; segmentTitle?: string };
+
+const Block = ({ block, segmentTitle }: BlockProps) => {
   let barColor =
     intensityBarColors[block.intensity || 'default'] ||
     intensityBarColors.default;
@@ -204,7 +205,9 @@ const Block: React.FC<{ block: Block; segmentTitle?: string }> = ({
   );
 };
 
-const Segment: React.FC<{ segment: Segment }> = ({ segment }) => {
+type SegmentProps = { segment: Segment };
+
+const Segment = ({ segment }: SegmentProps) => {
   return (
     <div className="mb-6">
       <h2 className="text-xl font-semibold text-white mb-4">{segment.title}</h2>
